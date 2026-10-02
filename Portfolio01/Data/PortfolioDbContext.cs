@@ -6,7 +6,7 @@ namespace Portfolio01.Data
     public class PortfolioDbContext : DbContext
     {
         //dbconstructors
-        public PortfolioDbContext(DbContextOptions PortfolioDbContext) : base(PortfolioDbContext)
+        public PortfolioDbContext(DbContextOptions PortfolioDbContextOptions) : base(PortfolioDbContextOptions)
         // dboptions to set the db connection string and other options from prg.cs // portfolioDbContext is the name of the dbcontext class
 
         {
