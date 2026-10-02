@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 1cfdef79-c147-46b6-8e8a-e98297821203
+
+localResources:
+  specs:
+    - ../Portfolio01/obj/Debug/net8.0/EndpointInfo/Portfolio01.json
