@@ -6,7 +6,8 @@ namespace Portfolio01.Models.HomePage
     public class Personalinfo
     {
 
-        public int Id { get; set; }
+        [Key]
+        public int GuId { get; set; }
 
         [Required]
         public string Name { get; set; }

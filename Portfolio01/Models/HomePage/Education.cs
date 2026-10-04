@@ -5,7 +5,8 @@ namespace Portfolio01.Models.HomePage
     public class Education
     {
 
-        public int Id { get; set; }
+        [Key]
+        public int GuId { get; set; }
 
         [Required]
         public string Institute { get; set; }

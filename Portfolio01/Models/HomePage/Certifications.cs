@@ -1,7 +1,10 @@
-﻿namespace Portfolio01.Models.HomePage
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Portfolio01.Models.HomePage
 {
     public class Certifications
     {
+        [Key]
         public Guid Id { get; set; }
         public List<string> Certification { get; set; }
 

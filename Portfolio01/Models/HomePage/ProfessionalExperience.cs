@@ -5,8 +5,8 @@ namespace Portfolio01.Models.HomePage
     public class ProfessionalExperience
     {
 
-        [Required]
-        public int id { get; set; }
+        [Key]
+        public int Guid { get; set; }
 
         public string Role { get; set; }
 
