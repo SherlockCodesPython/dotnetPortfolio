@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
+using Portfolio01.Data;
 using Portfolio01.Models.HomePage;
 
 namespace Portfolio01.Controllers
@@ -9,41 +10,39 @@ namespace Portfolio01.Controllers
     [ApiController] // ApiController Attribute
     public class PersonalInfoController : ControllerBase
     {
+        private readonly PortfolioDbContext dbContext;
+
+        public PersonalInfoController(PortfolioDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
         // Get All Personal Info
         // Get : http://localhost:5000/api/PersonalInfo/
         [HttpGet]
         public IActionResult GetAll()
         {
+            var personalinfo = dbContext.Personalinfos.ToList();
 
-            var personalinfo = new List<Personalinfo>
 
-            {
-
-                new Personalinfo
-                {
-                    GuId = 1,
-                    Name = "John Doe",
-                    EmailID = "john.doe@example.com",
-                    PhoneNo = "123-456-7890",
-                    ProfessionalSummary = "Experienced software developer with a passion for creating innovative solutions.",
-                    LinkdinUrl = "https://www.linkedin.com/in/johndoe",
-                    GithubUrl = "",
-
-                },
-                new Personalinfo
-                {
-                    GuId = 2,
-                    Name = "Jane Smith",
-                    EmailID = "jane.smith@example.com",
-                    PhoneNo = "098-765-4321",
-                    ProfessionalSummary = "Talented marketing specialist with a proven track record of driving brand awareness and customer engagement.",
-                    LinkdinUrl = "https://www.linkedin.com/in/janesmith",
-                    GithubUrl = "",
-                }
-
-            };
             return Ok(personalinfo);
         }
-            
+
+        //Get Personal Info by Id
+       [HttpGet]
+       [Route("{id:int}")]
+        public IActionResult GetById([FromRoute] int id)
+        {
+            //var personalinfo = dbContext.Personalinfos.Find(id);
+            var personalinfo = dbContext.Personalinfos.FirstOrDefault(x => x.GuId == id);
+
+            if (personalinfo == null)
+            {
+                return NotFound();
+            }
+
+
+            return Ok(personalinfo);
+
+        }
     }
 }
